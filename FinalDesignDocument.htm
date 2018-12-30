@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+
+<html xml:lang="en-US" dir="ltr" lang="en-US">
+
+  <head>
+    
+    <meta charset="UTF-8">
+    <!-- Slowly's Standard Webpage Template last updated 12-17-2013 -->
+    <!-- To add to Bluefish: as root copy to /usr/share/bluefish/templates -->
+    <!-- To add to BlueGriffon:  -->
+    <!-- To add to Dreamweaver: -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nocache, nosnippet, noodp, noydir">
+    <meta name="Googlebot" content="noindex, nofollow, noarchive, nocache, nosnippet, noodp, noydir">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+    <!-- <link rel="openid.server" href="http://www.myopenid.com/server"> -->
+    <!-- <link rel="openid.delegate" href="http://Pudnik.myopenid.com/"> -->
+
+    <title>GIS 341 Final Project Final Design Document</title>
+    
+    <style>
+    
+    /* Last Updated for HTML 5 9-22-2014 */
+    @charset "utf-8";
+    BODY {font-family:Arial;max-width:800px;font-size:10pt;}
+    HEADER{display:block;text-align:center;}
+    NAV{display:block;padding:10px;font-size:10px;margin:5px;text-align:center;}
+    SECTION{max-width:98%;}
+    ARTICLE{margin: 10px;padding: 10px;border-radius: 10px;}
+    ASIDE{display:block;width:25%;float:left;margin: 15px;font-style: italic;}
+    FOOTER{clear: both;display: block;padding: 15px;}
+    H1,H2,H3,H4,H5,H6{page-break-after:avoid;}
+    P, TD, TH {font-family:Arial;font-size:10pt;}
+    LI {padding:5px;}
+    CODE {font-family:courier;font-size:10pt;}
+    PRE {font-size: 9pt;}
+  
+    /* Classes */
+    .SlapStamp
+    {
+      color: #F47D31;
+      background-color: #fff;
+      -webkit-box-shadow: 2px 2px 20px #888;
+      -webkit-transform: rotate(-45deg);
+      -moz-box-shadow: 2px 2px 20px #888;
+      -moz-transform: rotate(-45deg);
+      position: absolute;
+      padding: 0px 150px;
+      text-align:center;
+    }
+    .important {font-family:verdana;font-weight:bold;color:red;}
+    .snippet {font-weight:bold;font-style:italic;}
+    .assignment{border:1px green solid;font-weight:bold;}
+    .classDate{border:2px red solid;font-weight:bolder;text-decoration:underline;}
+    .myAnswer{border:1px black solid;}
+    .Done{background-color: LightGrey;}
+    .groupProject{background-color: rgb(170, 255, 170);}
+    .codeIt{font-family:courier;}
+    .underlineIt{text-decoration:underline;}
+    .bigRed{color:red; font-weight:bold; font-size:12pt;font-family:sans-serif;}
+    .smallRed{line-height:18.0pt;font-size:8pt;color:#A81817;}
+    .lightRed{color:#ff3300;}
+    .tiny{margin: 1px;font-size: 9px;}
+    .imageCaption{margin: 2px;font-size: 12px;font-style:italic;}  
+    .greyAddress{font-size:7.5pt;color:gray;}
+    .LimeLine{border-bottom: 2px solid #0bce7e;width:200px;}
+    .fuschItalic{font-style:italic;color:#EF118C;}
+    .cursiveHandwriting{font-family:"Informal Roman";}
+  
+  /* stolen from CPI111 ASU Fall 2013 */
+    .bigLightGreen{color: #92C500;font-family: serif;font-weight: bold;font-size: 18pt;}
+    .PalePink{background-color:#ffe1ff;}
+    .PalePinkDashed{background-color:#ffe1ff;border:1px dashed black;}
+    .superTitle{font-size:24px;color:#315A6C;text-decoration:underline;}
+    .clsH0{font-size:48pt;font-weight:bolder;}
+    .clsH1{font-size:24pt;font-weight:bolder;}
+    .clsH2{font-size:18pt;font-weight:bolder;}
+    .clsH3{font-size:14pt;font-weight:bolder;}
+    .clsH4{font-size:12pt;font-weight:bold;}
+    .clsH5{font-size:10pt;font-weight:bold;}
+    .clsH6{font-size:8pt;font-weight:bold;}
+    }
+    .dropshadow 
+    {
+      -moz-box-shadow: 3px 3px 4px #999; /* Firefox */
+      -webkit-box-shadow: 3px 3px 4px #999; /* Safari/Chrome */
+      box-shadow: 3px 3px 4px #999; /* Opera and other CSS3 supporting browsers */
+      -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999999')";/* IE 8 */
+      :progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999999');/* IE 5.5 - 7 */ 
+    }
+    .cornflower 
+    {
+     background-color: #8CA4D4;
+     color: #2F2F65;
+     font-weight: bold;
+     font-size: 18px;
+    }
+    
+    /* Stolen from Eric Meyer meyerweb.com */
+    .skyBlue{background: #B4D5FF; font-weight: bold;}
+    .warningYellow {background: #FF8; color: red; border: 2px solid; padding: 1em;}
+    
+    /* Stolen from Stack Overflow */
+    .alert
+    {
+      padding:5px;
+      font-weight:bold;
+      margin-bottom:10px;
+      margin-top:5px;
+      border:2px dotted #AE0000;
+    }
+    .button
+    {
+      color:#3E6D8E;
+      background-color:#E0EAF1;
+      border-bottom:1px solid #3E6D8E;
+      border-right:1px solid #7F9FB6;
+      padding:3px 4px 3px 4px;
+      margin:2px 2px 2px 0;
+    }
+    .badge
+    {
+      color:#fff;
+      background-color:#333;
+      border:1px solid #333;
+      margin:0 3px 3px 0;
+      padding:0px 6px 0px 3px;
+      display:inline-block;
+    }
+    .interesting{background-color:#ffefc6;}
+    .orangeLight{font-family:Trebuchet MS;background-color:#ff9900;color:#fff;}
+    .orangeDark{background-color:#df5c13;padding:3px 15px 5px 38px;margin:2px 0px;color:white;}
+    
+    .warning
+    {
+      background-color:#E23535;
+      color:#FFFFFF;
+      font-size:10px;
+      padding:0 5px 1px;
+    }
+    
+    /* Stolen from javadoc */
+    .mauveDark{background:#BBBBFF;}
+    .mauveLight{background:#DDDDFF;}
+    .maroon{color:maroon;}
+    .darkBlue{background-color:#00008B;color:#FFFFFF;}
+    
+    /* Stolen from John Urbanek */
+    .blueBlack{background-color: #333333;color:#00CCFF;text-align:center;font-style:italic;}
+    .blueBold{color:#3366FF;font-weight:bolder;}
+    .maroonBold{color:maroon;font-weight:bold;}
+    .navy{color:navy;}
+    .navyBold{color:navy;font-weight:bold;}
+    .cyan{color:#2b91af;}
+    .cyanBold{color:#2b91af;font-weight:bold;}
+    .aqua{color:#0078C0;}
+    .aquaBold{color:#0078C0;font-weight:bold;}
+    .diffchange {color:silver;font-weight: bold;text-decoration: underline;font-size:12pt;}
+    
+    /* for term papers */
+    .s0 {font-family: monospace; font-size: 10pt; }
+    .s1 { color: #BE2D00; font-size: 28pt; }
+    .s2 { color: #BE2D00; font-size: 16pt; }
+    .s3 { color: #40458C; font-size: 12pt; }
+    .s4 { color: #40458C; font-style: italic; font-weight: bold; font-size: 12pt; }
+    .s6 { color: #40458C; font-size: 10pt; }
+    .s7 { color: #40458C; font-size: 20pt; }
+    .s9 { color: #40458C; font-size: 8pt; }
+    
+    /* stolen from Radek Suski and Protostar */
+    
+    .aqua1 {color:white;background-color:#61b6ff}
+    .aqua2 {color:white;background:#2892ff!important;}
+    .aqua3{color:yellow;background:#2e9fff;}
+    .aqua4
+    {
+      color:Yellow;
+      text-shadow:0 -1px 0 rgba(0,0,0,.25);
+      background-color:#49afcd;
+      background-image:-webkit-linear-gradient(to bottom, #5bc0de, #2f96b4);
+      background-image:linear-gradient(to bottom, #5bc0de, #2f96b4);
+      background-repeat:repeat-x;  
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+      border-color:#2f96b4 #2f96b4 #1f6377;
+      border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+      filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
+    }
+    .aqua5{color:white;background-color:#2f96b4;}
+    .teal1{background:#6fa42a;}
+    .teal2{background-color:#51a351;}
+    .greenieWhite{color:white;background:#4bad00;}
+    .yellow1{background:#ffc62e;}
+    .radekAlert
+    {
+      background:#a3aebc;
+      padding:10px 35px 10px 14px;
+      border:0;
+      border-radius:4px;
+      font-weight:700;
+      line-height:20px;
+      font-size:13px;
+      text-shadow:none;
+    }
+    .radekBigClose
+    {
+      float:right;
+      font-weight:700;
+      display:block;
+      font-size:20px;
+      opacity:.8;
+      padding:0!important;
+      background:none!important;
+    }
+    .btnBlue
+    {
+      text-shadow:0 -1px 0 rgba(0,0,0,.25);
+      background-color:#004cd6;
+      background-image:-webkit-linear-gradient(to bottom, #0069d6, #0022d6);
+      background-image:linear-gradient(to bottom, #0069d6, #0022d6);
+      background-repeat:repeat-x;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0069d6', endColorstr='#ff0022d6', GradientType=0);
+      border-color:#0022d6 #0022d6 #00168a;
+      border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+      filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
+    }
+    .btn-warning
+    {
+      text-shadow:0 -1px 0 rgba(0,0,0,.25);
+      background-color:#ff855c;
+      background-image:-webkit-linear-gradient(to bottom, #ff9c7b, #ff632e);
+      background-image:linear-gradient(to bottom, #ff9c7b, #ff632e);
+      background-repeat:repeat-x;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff9c7b', endColorstr='#ffff632e', GradientType=0);
+      border-color:#ff632e #ff632e #e13900;
+      border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+      filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
+    }
+    .btnFlesh{background-color:#ff632e;}
+    .btnSunburn
+    {
+      text-shadow:0 -1px 0 rgba(0,0,0,.25);
+      background-color:#da4f49;
+      background-image:-webkit-linear-gradient(to bottom, #ee5f5b, #bd362f);
+      background-image:linear-gradient(to bottom, #ee5f5b, #bd362f);
+      background-repeat:repeat-x;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+      border-color:#bd362f #bd362f #802420;
+      border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+      filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
+    }
+    .btnPinkDark{background-color:#bd362f;}
+    .btnInverse
+    {
+      text-shadow:0 -1px 0 rgba(0,0,0,.25);
+      background-color:#363636;
+      background-image:-webkit-linear-gradient(to bottom, #444, #222);
+      background-image:linear-gradient(to bottom, #444, #222);
+      background-repeat:repeat-x;
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+      border-color:#222 #222 #000;
+      border-color:rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+      filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
+    }
+    .btnDarkie{background-color:#222;}
+    .hexGreen{color:#40a070;}
+    
+    /* stolen from waves.com */
+    .noscript
+    {
+      background-color: #ffc4c4;
+      border: 1px solid #7b0812;
+      border-radius: 5px;
+      color: #7b0812;
+      padding: 5px 10px;
+    }
+    
+    /* stolen from net-tuts */
+    .btnBlueBig
+    {
+      width:400px;
+      margin: 200px auto;
+      background: #014464;
+      background: -moz-linear-gradient(top, #0D658E, #0C577A 50%, #014D71 51%, #003E5C);
+      background: -webkit-gradient(linear, left top, left bottom, 
+                  color-stop(0, #0E658E), color-stop(.5, #0C577A), 
+                  color-stop(.5, #014D71), to(#003E5C));
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      border: 1px solid #368DBE;
+      border-top: 1px solid #C3D6DF;
+      -moz-box-shadow: 0 1px 3px black;
+      -webkit-box-shadow: 0 1px 3px black;
+      -box-shadow: 0 1px 3px black;  
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      color:blue;
+      font-size: 50px;
+      font-weight: bold;
+      text-shadow: 0 1px 0 #9FF;
+    }
+    .btnBlueSmall 
+    {
+      line-height: 1;
+      padding: 7px 10px;
+      font-weight: bold;
+      color: white;
+      background-color: #39c;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -khtml-border-radius: 5px;
+      border-radius: 5px;
+      -moz-box-shadow: 0 1px 3px black;
+      -webkit-box-shadow: 0 1px 3px black;
+      -khtml-box-shadow: 0 1px 3px black;
+      -box-shadow: 0 1px 3px black;  
+      text-shadow: 0 1px 0 black;
+    }
+    
+    /* stolen from GPH 211 syllabus Spring 2014 */
+    
+    .Estilo29 {font-size: 30px;color: #F7C709;}
+    .Estilo6 {color: #CC0000;font-size: 27px;} 
+    .Estilo40 {font-size: 26px; color: #660000; font-weight: bold;}
+    .Estilo50 {font-size: 22px; color: #660000; font-weight: bold;}
+    .Estilo44 {color: #660000; font-weight: bold;}
+    .Estilo34 {color: #87140E; font-weight: bold;}
+    .Estilo42 {color: #660000;}
+    .Estilo47 {color: #AA0000;}
+    .Estilo32 {font-size: 15px;color: #333333;font-weight: bold;}
+    .Estilo31 {color: #333333;}
+				
+      </style>
+      
+    </head>
+    
+  <body>
+  <table id="container" width="800">
+  <tr><td>
+  <table id="content" style="border: 1px solid green;" width="99%">
+  <tr><td align="left" valign="top">
+  
+  
+<h1>Final Design Document</h1>
+
+
+<ol type="a">
+  <li>
+    My map's topic, and its purpose:<br><br>
+     <div class="myAnswer">Employment outlook for the next 8 years, by state. That is, the projected increase in employment over current employment figures, by state, in the next 8 years.</div>
+  </li>
+  <li>
+    Map projection used:<br><br>
+<div class="myAnswer">U.S.A. Contiguous Lambert Conformal Conic. According to the second lecture on projections, slide 30, a Lambert Conformal Conic projection is commonly used for the contiguous United States. I chose to leave the default standard parallels of 33 and 45 degrees N intact.</div>
+  </li>
+  <li>Information Hierarchy:<br><br>
+    <div class="myAnswer"> I chose my map's information hierarchy based in large part on slide 11 of the first lecture on map design fundamentals. The choropleth map, and its color scheme, was top priority. Next in importance came the map's title and legend - I had to spend some time getting the legend to look right. Lowest in importance was the ancillary text and the map's neat and frame lines.</div>
+  </li>
+  <li>
+    Sources of any statistical or descriptive information:<br><br>
+<div class="myAnswer">The <a href="http://www.projectionscentral.com/Projections/LongTerm" target="_blank">projected jobs</a> website projected employment data, by state, 2012 - 2022.</div></li>
+  <li>
+    Data symbolization strategy:<br><br>
+    <ol type="i">
+      <li>
+        Strategy I chose:<br><br>
+        <div class="myAnswer">To save time, I deliberately chose a source dataset that would fit well in a choropleth map. The data was continuous and smooth, 
+        fitting well in a conformal, thematic setting. I wanted to keep it simple, to save time.</div>
+      </li>
+      <li>
+        Classification strategy:<br><br>
+        <div class="myAnswer">As you can see from the histogram, I lucked out - the data turned out not to be too skewed, with only one glaring outlier. I fixed it by snapping the breaks to the data. I went ahead and let ArcGIS apply the Jenks natural breaks classification strategy. Not classifying the data wouldn't have made sense. The summarized data as percentage ratios emphasized the pattern I wanted to show - unfortunately, I had hoped that states other than Arizona or Texas would have better showings...
+          <div><img src="ClassBreaks.png"></div>
+        </div>
+      </li>
+      <li>
+        Single map or map series choice:<br><br>
+        <div class="myAnswer">Again, I wanted to keep it simple and similar to the Lab 7 map to save time, and chose a single map frame.</div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    Final map information hierarchy exclusions:<br>
+    <br>
+    <div class="myAnswer">This is a purely thematic map, and thus I felt that it didn't need to have certain lower-importance elements such as a scale or a north arrow.  I have included my chosen standard parallels above.</div>
+  </li>
+</ol>
+
+</td></tr></table>
+</td></tr></table>
+</body>
+</html>
